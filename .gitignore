@@ -1,0 +1,9 @@
+*.o
+*.a
+libmlx_Linux.a
+libmlx.a
+test
+miniRT
+*.exe
+*.swp
+*.out

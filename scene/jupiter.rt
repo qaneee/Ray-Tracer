@@ -1,0 +1,5 @@
+A 0.2 255,255,255
+S scene/xpms/2k_stars_milky_way.xpm
+C 0,1,0 0,0,1 70
+L 0,0,-3 0.7
+sp 0,0,10 7 5,120,255 scene/xpms/2k_jupiter.xpm
