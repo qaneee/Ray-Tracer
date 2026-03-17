@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 23:31:33 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/12 00:42:57 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/17 22:55:42 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static int	values_plane(t_objs *new, int *i, t_parse *p)
 	{
 		free(new);
 		free_parsing_fail(p);
-		print_error("Cone axis must be normalized\n");
+		print_error("Plane axis must be normalized\n");
 	}
 	new->color = parse_color(p->tokens[(*i)++]);
 	if (!valid_color(&new->color))
 	{
 		free(new);
 		free_parsing_fail(p);
-		print_error("Invalid color for cone!\n");
+		print_error("Invalid color for plane!\n");
 	}
 	return (*i);
 }

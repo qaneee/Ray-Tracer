@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 23:30:39 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/12 00:45:13 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/17 22:56:05 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	values_sphere(t_objs *new, int *i, t_parse *p)
 	{
 		free(new);
 		free_parsing_fail(p);
-		print_error("Invalid color for cone!\n");
+		print_error("Invalid color for sphere!\n");
 	}
 	return (*i);
 }

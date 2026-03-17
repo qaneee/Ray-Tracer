@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 13:33:04 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/12 00:38:27 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/17 22:43:01 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vec3	parse_normalized_vector(char *s)
 	if (arg_count(arr) != 3)
 	{
 		free_split(arr);
-		print_error("Not a 3 dimensional\n");
+		return ((t_vec3){nanf(""), nanf(""), nanf("")});
 	}
 	vector.x = parse_float(arr[0]);
 	vector.y = parse_float(arr[1]);

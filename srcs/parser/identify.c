@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:56:32 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/12 00:56:08 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/17 22:45:52 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	norminette_survivors(t_parse *p)
 		if (p->sc->has_camera)
 		{
 			free_parsing_fail(p);
-			print_error("Multiple ambient!\n");
+			print_error("Multiple camera!\n");
 		}
 		p->sc->has_camera = 1;
 		parse_camera(p);
