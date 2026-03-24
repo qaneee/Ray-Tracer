@@ -6,15 +6,15 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:07:21 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/15 12:25:52 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:27:27 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 # define EPS 1e-3
 # define STEP 2.0f
