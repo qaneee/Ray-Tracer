@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:22:16 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 12:00:35 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:40:28 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,24 @@
 //utils
 int		get_color(t_color color);
 void	print_error(char *msg);
-void	free_split(char **str);
 void	skip_whitespaces(char **str);
 int		valid_color(t_color *color);
 void	trim_whitespaces(char *str);
-void	free_scene(t_scene *sc);
 int		is_normalized(t_vec3 vec);
 void	make_all_spaces(char *line);
 void	append_object(t_scene *sc, t_objs *new);
 void	append_light(t_scene *sc, t_light *new);
 int		arg_count(char **tokens);
-void	mlx_error(t_mlx	*var);
 void	put_pixel(t_mlx *mlx, int x, int y, int color);
+
+// free funcs
+void	free_split(char **str);
+void	free_scene(t_scene *sc);
 void	free_mlx(t_data *data);
 void	free_objects(t_objs *head);
 void	free_lights(t_light *head);
+void	cleanup_and_exit(t_data *data);
+void	cleanup_and_error(t_data *data, char *msg);
 
 //parser + validation
 void	parse_file(t_scene *sc, char *file_name);
@@ -129,7 +132,6 @@ t_color	blend_color(t_color base, t_color reflect, float ref_coef);
 
 // events and hooks
 void	setup_hooks(t_data *data);
-void	cleanup_and_exit(t_data *data);
 void	move_forward(t_data *d, float step);
 void	move_backward(t_data *d, float step);
 void	move_right(t_data *d, float step);

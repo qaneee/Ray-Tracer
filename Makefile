@@ -6,7 +6,7 @@
 #    By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:43:57 by arvardan          #+#    #+#              #
-#    Updated: 2026/03/15 13:14:21 by arvardan         ###   ########.fr        #
+#    Updated: 2026/03/26 12:39:47 by arvardan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ OBJ_FOLDER	= objs
 SRC =	$(SRC_FOLDER)/main.c \
 		$(SRC_FOLDER)/init.c \
 		$(SRC_FOLDER)/utils/color.c \
-		$(SRC_FOLDER)/utils/print_error.c \
 		$(SRC_FOLDER)/utils/free.c \
 		$(SRC_FOLDER)/utils/handle_whitespace.c \
 		$(SRC_FOLDER)/utils/append.c \

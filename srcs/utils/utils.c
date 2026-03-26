@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 14:07:36 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/05 20:50:15 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:39:32 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ void	put_pixel(t_mlx *mlx, int x, int y, int color)
 		return ;
 	dst = mlx->addr + (y * mlx->lsize + x * (mlx->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	print_error(char *msg)
+{
+	write(STDERR_FILENO, "Error\n", 6);
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	exit (1);
 }

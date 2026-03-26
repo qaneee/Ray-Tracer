@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:44:39 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 12:12:44 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:30:32 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,15 @@ void	free_parsing_fail(t_parse *p, char *msg)
 	exit (1);
 }
 
+void	cleanup_and_error(t_data *data, char *msg)
+{
+	if (data)
+	{
+		free_texture(data);
+		free_mlx(data);
+		free_scene(&data->scene);
+	}
+	write(STDERR_FILENO, "Error\n", 6);
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	exit(1);
+}
