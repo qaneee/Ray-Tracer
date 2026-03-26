@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:53:16 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/02 20:00:38 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:07:58 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	ft_bzero(&data, sizeof(data));
 	if (argc != 2)
 		print_error("Wrong argument count\n");
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 3, ".rt", 3))
@@ -29,7 +30,7 @@ int	main(int argc, char **argv)
 	data.needs_redraw = 0;
 	init_scene_textures(&data);
 	render_scene(&data);
-	mlx_exit(&data);
+	setup_hooks(&data);
 	mlx_loop(data.mlx.mlx);
 	cleanup_and_exit(&data);
 	return (0);

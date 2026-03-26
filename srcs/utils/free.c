@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 22:51:46 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/02 09:19:30 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 10:46:49 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_split(char **str)
 {
 	int	i;
 
+	if (!str)
+		return ;
 	i = 0;
 	while (str[i])
 	{
@@ -25,10 +27,12 @@ void	free_split(char **str)
 	free(str);
 }
 
-static void	free_objects(t_objs *head)
+void	free_objects(t_objs *head)
 {
 	t_objs	*temp;
 
+	if (!head)
+		return ;
 	while (head)
 	{
 		temp = head->next;
@@ -39,10 +43,12 @@ static void	free_objects(t_objs *head)
 	}
 }
 
-static void	free_lights(t_light *head)
+void	free_lights(t_light *head)
 {
 	t_light	*temp;
 
+	if (!head)
+		return ;
 	while (head)
 	{
 		temp = head->next;

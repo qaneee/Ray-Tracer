@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:22:16 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/13 19:37:15 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:00:35 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		arg_count(char **tokens);
 void	mlx_error(t_mlx	*var);
 void	put_pixel(t_mlx *mlx, int x, int y, int color);
 void	free_mlx(t_data *data);
+void	free_objects(t_objs *head);
+void	free_lights(t_light *head);
 
 //parser + validation
 void	parse_file(t_scene *sc, char *file_name);
@@ -69,7 +71,7 @@ int		parse_mirror(t_objs *new, char *token);
 int		parse_checker(t_objs *new, char *token);
 int		parse_specular(t_objs *new, char *token);
 int		parse_shininess(t_objs *new, char *token);
-void	free_parsing_fail(t_parse *p);
+void	free_parsing_fail(t_parse *p, char *msg);
 
 // math
 t_vec3	normal_vector(t_vec3 vec);
@@ -126,7 +128,7 @@ t_color	get_reflect_vec(t_scene *sc, t_hit *hit, t_ray *incoming, int depth);
 t_color	blend_color(t_color base, t_color reflect, float ref_coef);
 
 // events and hooks
-void	mlx_exit(t_data *data);
+void	setup_hooks(t_data *data);
 void	cleanup_and_exit(t_data *data);
 void	move_forward(t_data *d, float step);
 void	move_backward(t_data *d, float step);

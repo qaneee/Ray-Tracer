@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:56:32 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/17 22:45:52 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 10:59:04 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,14 @@ static int	norminette_survivors(t_parse *p)
 	if (ft_strcmp(p->tokens[0], "A") == 0)
 	{
 		if (p->sc->has_amb)
-		{
-			free_parsing_fail(p);
-			print_error("Multiple ambient!\n");
-		}
+			free_parsing_fail(p, "Multiple ambient!\n");
 		p->sc->has_amb = 1;
 		parse_ambient(p);
 	}
 	else if (ft_strcmp(p->tokens[0], "C") == 0)
 	{
 		if (p->sc->has_camera)
-		{
-			free_parsing_fail(p);
-			print_error("Multiple camera!\n");
-		}
+			free_parsing_fail(p, "Multiple camera!\n");
 		p->sc->has_camera = 1;
 		parse_camera(p);
 	}
@@ -54,17 +48,13 @@ static void	norminette_victims(t_parse *p)
 	else if (ft_strcmp(p->tokens[0], "S") == 0)
 	{
 		if (p->sc->has_skybox)
-		{
-			free_parsing_fail(p);
-			print_error("Multiple skyboxes!\n");
-		}
+			free_parsing_fail(p, "Multiple skyboxes!\n");
 		p->sc->has_skybox = 1;
 		parse_skybox(p);
 	}
 	else
 	{
-		free_parsing_fail(p);
-		print_error("Invalid object\n");
+		free_parsing_fail(p, "Invalid object\n");
 	}
 }
 

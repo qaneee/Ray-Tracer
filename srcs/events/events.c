@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 22:11:18 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/28 17:53:10 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:00:45 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	key_handle(int keycode, t_data *data)
 	return (0);
 }
 
-void	mlx_exit(t_data *data)
+void	setup_hooks(t_data *data)
 {
 	mlx_expose_hook(data->mlx.win, handle_refresh, data);
 	mlx_hook(data->mlx.win, 22, 1L << 17, handle_refresh, data);
