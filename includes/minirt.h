@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:22:16 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 12:40:28 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 14:48:33 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	free_objects(t_objs *head);
 void	free_lights(t_light *head);
 void	cleanup_and_exit(t_data *data);
 void	cleanup_and_error(t_data *data, char *msg);
+void	free_parsing_fail(t_parse *p, char *msg);
 
 //parser + validation
 void	parse_file(t_scene *sc, char *file_name);
@@ -74,7 +75,11 @@ int		parse_mirror(t_objs *new, char *token);
 int		parse_checker(t_objs *new, char *token);
 int		parse_specular(t_objs *new, char *token);
 int		parse_shininess(t_objs *new, char *token);
-void	free_parsing_fail(t_parse *p, char *msg);
+void	check_vector(t_vec3 vec, t_objs *obj, t_parse *p, char *msg);
+void	check_positive(float value, t_objs *obj, t_parse *p, char *msg);
+void	check_color(t_color color, t_objs *obj, t_parse *p, char *msg);
+void	check_normalized(t_vec3 vec, t_objs *obj, t_parse *p, char *msg);
+t_objs	*create_object(t_parse *p, t_type type);
 
 // math
 t_vec3	normal_vector(t_vec3 vec);

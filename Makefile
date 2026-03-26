@@ -6,7 +6,7 @@
 #    By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:43:57 by arvardan          #+#    #+#              #
-#    Updated: 2026/03/26 12:39:47 by arvardan         ###   ########.fr        #
+#    Updated: 2026/03/26 13:57:49 by arvardan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =	$(SRC_FOLDER)/main.c \
 		$(SRC_FOLDER)/parser/parse_cylinder.c \
 		$(SRC_FOLDER)/parser/identify.c \
 		$(SRC_FOLDER)/parser/parse_utils.c \
+		$(SRC_FOLDER)/parser/check.c \
 		$(SRC_FOLDER)/math/vec1.c \
 		$(SRC_FOLDER)/math/vec2.c \
 		$(SRC_FOLDER)/math/math.c \

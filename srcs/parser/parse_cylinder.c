@@ -6,50 +6,25 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 23:22:12 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 11:06:22 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 14:59:08 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	values_cylinder_height_color(t_objs *new, int *i, t_parse *p)
-{
-	new->height = parse_float(p->tokens[(*i)++]);
-	if (isnan(new->height) || new->height <= 0)
-	{
-		free_objects(new);
-		free_parsing_fail(p, "Height has to be a positive float!\n");
-	}
-	new->color = parse_color(p->tokens[(*i)++]);
-	if (!valid_color(&new->color))
-	{
-		free_objects(new);
-		free_parsing_fail(p, "Invalid color for cylinder!\n");
-	}
-}
-
 static void	values_cylinder(t_objs *new, int *i, t_parse *p)
 {
 	new->pos = parse_vector(p->tokens[(*i)++]);
-	if (isnan(new->pos.x) || isnan(new->pos.y) || isnan(new->pos.z))
-	{
-		free_objects(new);
-		free_parsing_fail(p, "Failed parsing vector!\n");
-	}
+	check_vector(new->pos, new, p, "Vector validation failed!\n");
 	new->orientation = parse_normalized_vector(p->tokens[(*i)++]);
-	if (!is_normalized(new->orientation))
-	{
-		free_objects(new);
-		free_parsing_fail(p, "Cylinder axis must be normalized\n");
-	}
+	check_normalized(new->orientation, new, p, "Axis must be normalized!\n");
 	new->diameter = parse_float(p->tokens[(*i)++]);
-	if (isnan(new->diameter) || new->diameter <= 0)
-	{
-		free_objects(new);
-		free_parsing_fail(p, "Diameter has to be a positive float!\n");
-	}
+	check_positive(new->diameter, new, p, "Diameter has to be positive!\n");
 	new->radius = new->diameter / 2;
-	values_cylinder_height_color(new, i, p);
+	new->height = parse_float(p->tokens[(*i)++]);
+	check_positive(new->height, new, p, "Height has to be positive!\n");
+	new->color = parse_color(p->tokens[(*i)++]);
+	check_color(new->color, new, p, "Invalid color: cylinder!\n");
 }
 
 void	parse_cylinder(t_parse *p)
@@ -61,11 +36,7 @@ void	parse_cylinder(t_parse *p)
 	line_args = arg_count(p->tokens);
 	if (line_args < 6 || line_args > 9)
 		free_parsing_fail(p, "Invalid argument for identifier: cylinder!\n");
-	new = malloc(sizeof(t_objs));
-	if (!new)
-		free_parsing_fail(p, "Malloc failed!\n");
-	init_object(new);
-	new->type = CYLINDER;
+	new = create_object(p, CYLINDER);
 	i = 1;
 	values_cylinder(new, &i, p);
 	args_loop(&i, &line_args, new, p);

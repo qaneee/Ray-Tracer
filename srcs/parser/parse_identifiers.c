@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:35:27 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 11:15:18 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 15:00:56 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	parse_camera(t_parse *p)
 	if (isnan(p->sc->camera.pos.x) || isnan(p->sc->camera.pos.y)
 		|| isnan(p->sc->camera.pos.z))
 	{
-		free_parsing_fail(p, "Failed parsing vector!\n");
+		free_parsing_fail(p, "Vector validation failed\n");
 	}
 	p->sc->camera.dir = parse_normalized_vector(p->tokens[2]);
 	if (!is_normalized(p->sc->camera.dir))
@@ -61,7 +61,7 @@ static void	parse_light_values(t_parse *p, t_light *new)
 	if (isnan(new->pos.x) || isnan(new->pos.y) || isnan(new->pos.z))
 	{
 		free_lights(new);
-		free_parsing_fail(p, "Failed parsing vector!\n");
+		free_parsing_fail(p, "Vector validation failed!\n");
 	}
 	new->brightness = parse_float(p->tokens[2]);
 	if (new->brightness < 0.0 || new->brightness > 1.0)
@@ -76,7 +76,7 @@ static void	parse_light_values(t_parse *p, t_light *new)
 	if (!valid_color(&new->color))
 	{
 		free_lights(new);
-		free_parsing_fail(p, "Invalid color for light!\n");
+		free_parsing_fail(p, "Invalid color: light!\n");
 	}
 }
 

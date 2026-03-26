@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 13:33:04 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 11:42:49 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/03/26 14:59:29 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	args_loop(int *start, int *end, t_objs *new, t_parse *p)
 		if (parse_optional(new, p->tokens[*start]) == -1)
 		{
 			free_objects(new);
-			free_parsing_fail(p, "Invalid/incompatible optional parameters\n");
+			free_parsing_fail(p, "Invalid/incompatible optional parameter!\n");
 		}
 		(*start)++;
 	}
