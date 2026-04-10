@@ -57,7 +57,7 @@ make re
 - Optional `S` for skybox (`.xpm`)
 
 ### Optional object parameters
-- `mirror` or a reflection factor float in `[0.0, 1.0]`
+- `mirror` `1.0`
 - `checkerboard`
 - texture path ending in `.xpm`
 - `specular=<float>` and `shininess=<float>` (must be provided together)
