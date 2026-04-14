@@ -6,7 +6,7 @@
 #    By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:43:57 by arvardan          #+#    #+#              #
-#    Updated: 2026/03/26 13:57:49 by arvardan         ###   ########.fr        #
+#    Updated: 2026/04/14 12:35:01 by arvardan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,9 +85,11 @@ R	= \033[0;31m
 Y	= \033[1;33m
 RS	= \033[0m
 
+HEADERS = includes/minirt.h includes/defines.h includes/structs.h
+
 all: $(LIBFT) $(MLX) $(NAME)
 
-$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
+$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c $(HEADERS)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
