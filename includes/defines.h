@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:07:21 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/24 14:27:27 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/04/25 20:12:19 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # define M_PI 3.14159265358979323846
 
 # define KEY_ESC 65307
+
+// Error messages
+# define ERR_VALID_VEC "Vector validation failed!\n"
+# define ERR_POS_DIAMETER "Diameter has to be positive!\n"
+# define ERR_POS_HEIGHT "Height has to be positive!\n"
+# define ERR_NORM_AXIS "Axis must be normalized!\n"
 
 // up, down, left, right, forward, backward
 # define KEY_W 119

@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 23:22:12 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 14:59:08 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/04/25 20:12:46 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static void	values_cylinder(t_objs *new, int *i, t_parse *p)
 {
 	new->pos = parse_vector(p->tokens[(*i)++]);
-	check_vector(new->pos, new, p, "Vector validation failed!\n");
+	check_vector(new->pos, new, p, ERR_VALID_VEC);
 	new->orientation = parse_normalized_vector(p->tokens[(*i)++]);
-	check_normalized(new->orientation, new, p, "Axis must be normalized!\n");
+	check_normalized(new->orientation, new, p, ERR_NORM_AXIS);
 	new->diameter = parse_float(p->tokens[(*i)++]);
-	check_positive(new->diameter, new, p, "Diameter has to be positive!\n");
+	check_positive(new->diameter, new, p, ERR_POS_DIAMETER);
 	new->radius = new->diameter / 2;
 	new->height = parse_float(p->tokens[(*i)++]);
-	check_positive(new->height, new, p, "Height has to be positive!\n");
+	check_positive(new->height, new, p, ERR_POS_HEIGHT);
 	new->color = parse_color(p->tokens[(*i)++]);
 	check_color(new->color, new, p, "Invalid color: cylinder!\n");
 }

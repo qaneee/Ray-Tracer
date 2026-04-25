@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 23:31:33 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 15:01:17 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/04/25 20:13:40 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static int	values_plane(t_objs *new, int *i, t_parse *p)
 {
 	new->pos = parse_vector(p->tokens[(*i)++]);
-	check_vector(new->pos, new, p, "Vector validation failed!\n");
+	check_vector(new->pos, new, p, ERR_VALID_VEC);
 	new->orientation = parse_normalized_vector(p->tokens[(*i)++]);
-	check_normalized(new->orientation, new, p, "Axis must be normalized\n");
+	check_normalized(new->orientation, new, p, ERR_NORM_AXIS);
 	new->color = parse_color(p->tokens[(*i)++]);
 	check_color(new->color, new, p, "Invalid color: plane!\n");
 	return (*i);
