@@ -6,13 +6,12 @@
 #    By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:43:57 by arvardan          #+#    #+#              #
-#    Updated: 2026/04/14 12:35:01 by arvardan         ###   ########.fr        #
+#    Updated: 2026/04/25 20:31:37 by arvardan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-INCLUDES	= -Iincludes -Ilibft -Iminilibx-linux
 
 ifeq ($(DEBUG),debug)
 CFLAGS += -g3
@@ -20,6 +19,20 @@ endif
 
 ifeq ($(DEBUG),full)
 CFLAGS += -g3 -fsanitize=address,undefined
+endif
+
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Darwin)
+	MLX_DIR		= minilibx-macos
+	MLX			= $(MLX_DIR)/libmlx.a
+	MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	INCLUDES	= -Iincludes -Ilibft -I$(MLX_DIR)
+else
+	MLX_DIR		= minilibx-linux
+	MLX			= $(MLX_DIR)/libmlx_Linux.a
+	MLX_FLAGS	= -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm
+	INCLUDES	= -Iincludes -Ilibft -I$(MLX_DIR)
 endif
 
 SRC_FOLDER	= srcs
@@ -78,7 +91,6 @@ SRC =	$(SRC_FOLDER)/main.c \
 
 OBJS	= $(SRC:$(SRC_FOLDER)/%.c=$(OBJ_FOLDER)/%.o)
 LIBFT	= libft/libft.a
-MLX		= minilibx-linux/libmlx_Linux.a
 NAME	= miniRT
 
 R	= \033[0;31m
@@ -99,11 +111,11 @@ $(LIBFT):
 
 $(MLX):
 	@printf "$(R)⚙️  building minilibx...$(RS)\n"
-	@$(MAKE) -C minilibx-linux --silent > /dev/null 2>&1
+	@$(MAKE) -C $(MLX_DIR) --silent > /dev/null 2>&1
 
 $(NAME): $(OBJS)
 	@printf "$(Y)🔧 linking objects...$(RS)\n"
-	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft -Lminilibx-linux -lmlx_Linux -lXext -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft $(MLX_FLAGS) -o $(NAME)
 	@printf "$(R)✅ build complete: ./$(NAME)$(RS)\n"
 	@sleep 0.07
 	@printf "\033[38;5;51m███╗░░░███╗██╗███╗░░██╗██╗██████╗░████████╗\033[0m\n"
@@ -124,7 +136,7 @@ bonus: all
 
 clean:
 	@$(MAKE) -C libft clean --silent > /dev/null 2>&1
-	@$(MAKE) -C minilibx-linux clean --silent > /dev/null 2>&1
+	@$(MAKE) -C $(MLX_DIR) clean --silent > /dev/null 2>&1
 	@rm -rf $(OBJ_FOLDER)
 	@printf "$(R)🧹 objects cleaned!$(RS)\n"
 
