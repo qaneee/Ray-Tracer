@@ -19,6 +19,16 @@ This implementation includes:
 - `cc` and `make`
 - X11 development libraries (for MiniLibX), typically `libx11-dev` and `libxext-dev`
 
+### MiniLibX
+Clone the appropriate version into the project root:
+```bash
+# Linux
+git clone https://github.com/42Paris/minilibx-linux minilibx-linux
+
+# macOS
+git clone https://github.com/42Paris/minilibx-osx minilibx-macos
+```
+
 ### Compilation
 ```bash
 make
