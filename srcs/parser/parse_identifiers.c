@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:35:27 by arvardan          #+#    #+#             */
-/*   Updated: 2026/04/25 20:15:22 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/08 23:29:20 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	parse_light(t_parse *p)
 	new = malloc(sizeof(t_light));
 	if (!new)
 		free_parsing_fail(p, "Malloc failed\n");
+	new->next = NULL;
 	parse_light_values(p, new);
 	append_light(p->sc, new);
 }
