@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 14:07:36 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/26 12:39:32 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/09 10:19:45 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	is_normalized(t_vec3 vec)
 {
 	float	len;
 
-	len = vec.x * vec.x + vec.y * vec.y + vec.z * vec.z;
-	if (len < 1e-6)
+	len = sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	if (len < 1e-6f)
 		return (0);
-	return (fabs(len - 1.0) < 0.0001);
+	return (fabsf(len - 1.0f) < 1e-3f);
 }
 
 int	arg_count(char **tokens)
