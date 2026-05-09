@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 15:00:42 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/28 16:19:21 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/09 18:14:33 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	rotate_object(t_objs *obj, int keycode, float degrees)
 	t_vec3	axis;
 	float	angle;
 
-	if (!obj || obj->type == SPHERE)
+	if (!obj || obj->type == SPHERE || obj->type == CONE)
 		return (0);
 	if (!get_axis_from_key(keycode, &axis, &angle, degrees))
 		return (0);

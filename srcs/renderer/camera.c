@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 16:55:39 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/10 01:03:39 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/09 18:15:57 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_camera(t_camera *cam, int width, int height)
 	cam->viewport_height = viewport_height;
 	cam->aspect_ratio = aspect_ratio;
 	world_up = (t_vec3){0, 1, 0};
-	if (cam->forward.y > 0.999f)
+	if (fabsf(cam->forward.y) > 0.999f)
 		world_up = (t_vec3){0, 0, 1};
 	cam->right = normal_vector(cross_product(cam->forward, world_up));
 	cam->up = cross_product(cam->right, cam->forward);
