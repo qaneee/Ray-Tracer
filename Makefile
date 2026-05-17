@@ -130,7 +130,7 @@ $(NAME): $(OBJS)
 	@sleep 0.07
 	@printf "\033[38;5;21m╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═╝╚═╝░░╚═╝░░░╚═╝░░░\033[0m\n"
 	@sleep 0.07
-	@printf "\033[38;5;33m    👽 MADE BY: arvardan👽\033[0m\n"
+	@printf "\033[38;5;33m    👽 MADE BY: arvardan and ipogodae👽\033[0m\n"
 
 bonus: all
 
