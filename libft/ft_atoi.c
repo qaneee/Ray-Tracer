@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:25 by arvardan          #+#    #+#             */
-/*   Updated: 2025/10/07 13:19:55 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/31 20:55:47 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,31 @@ int	ft_atoi(const char *str)
 	return (number * sign);
 }
 
-static float	set_sign(const char **str)
+static int	set_sign(const char **str)
 {
-	float	sign;
+	int	sign;
 
-	sign = 1.0f;
+	sign = 1;
 	if (**str == '-' || **str == '+')
 	{
 		if (**str == '-')
-			sign = -1.0f;
+			sign = -1;
 		(*str)++;
 	}
 	return (sign);
 }
 
-static float	calc_fract(const char **str)
+static double	calc_fract(const char **str)
 {
-	float	fraction;
-	float	div;
+	double	fraction;
+	double	div;
 
-	fraction = 0.0f;
-	div = 1.0f;
+	fraction = 0.0;
+	div = 1.0;
 	while (**str >= '0' && **str <= '9')
 	{
-		fraction = fraction * 10.0f + (**str - '0');
-		div *= 10.0f;
+		fraction = fraction * 10.0 + (**str - '0');
+		div *= 10.0;
 		(*str)++;
 	}
 	return (fraction / div);
@@ -72,17 +72,16 @@ static float	calc_fract(const char **str)
 
 float	ft_atof(const char *str)
 {
-	float	number;
-	float	sign;
+	double	number;
+	int		sign;
 
-	number = 0.0f;
-	sign = 1.0f;
+	number = 0.0;
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
 	sign = set_sign(&str);
 	while (*str >= '0' && *str <= '9')
 	{
-		number = number * 10.0f + (*str - '0');
+		number = number * 10.0 + (*str - '0');
 		str++;
 	}
 	if (*str == '.')
@@ -90,5 +89,5 @@ float	ft_atof(const char *str)
 		str++;
 		number += calc_fract(&str);
 	}
-	return (number * sign);
+	return ((float)(number * sign));
 }
