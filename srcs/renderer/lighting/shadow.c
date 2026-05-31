@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:43:06 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/28 18:57:46 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/31 16:40:56 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_in_shadow(t_scene *s, t_vec3 p, t_vec3 light_norm, float light_dst)
 	float	t;
 
 	shadow_ray.direct = light_norm;
-	shadow_ray.origin = vec_add(p, vec_scale(light_norm, EPS));
+	shadow_ray.origin = vec_add(p, vec_scale(light_norm, EPS * 10.0f));
 	objs = s->objs;
 	while (objs)
 	{

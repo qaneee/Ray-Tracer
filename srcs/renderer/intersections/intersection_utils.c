@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:42:54 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/28 18:57:31 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/31 16:39:33 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	closest_intersection(t_scene *sc, t_ray *ray, t_hit *hit)
 	}
 	if (fl_hit)
 	{
+		hit->ray = *ray;
 		hit->point = vec_add(ray->origin, vec_scale(ray->direct, hit->t));
 		calculate_normal(hit);
 		hit->color = get_object_color(hit);

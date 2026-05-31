@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:26:55 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/28 18:53:24 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/31 16:38:37 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,18 @@ static t_vec3	normal_cylinder(t_hit *hit)
 static t_vec3	normal_cone(t_hit *hit)
 {
 	t_vec3	cap_normal;
+	t_vec3	n;
 
 	if (cone_base_normal(hit, &cap_normal))
+	{
+		if (dot_product(hit->ray.direct, cap_normal) > 0.0f)
+			return (vec_scale(cap_normal, -1.0f));
 		return (cap_normal);
-	return (cone_side_normal(hit));
+	}
+	n = cone_side_normal(hit);
+	if (dot_product(hit->ray.direct, n) > 0.0f)
+		return (vec_scale(n, -1.0f));
+	return (n);
 }
 
 void	calculate_normal(t_hit *hit)

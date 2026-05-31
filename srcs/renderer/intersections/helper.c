@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 17:02:15 by arvardan          #+#    #+#             */
-/*   Updated: 2026/02/28 18:56:48 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/31 16:38:18 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,11 @@ t_vec3	cone_side_normal(t_hit *hit)
 {
 	t_vec3	apex_to_point;
 	float	h;
-	float	r;
-	t_vec3	axis_component;
-	t_vec3	radial_component;
 
 	apex_to_point = vec_subt(hit->point, hit->objs->pos);
 	h = dot_product(apex_to_point, hit->objs->orientation);
-	r = hit->objs->radius * h / hit->objs->height;
-	axis_component = vec_scale(hit->objs->orientation, h);
-	radial_component = vec_subt(apex_to_point, axis_component);
-	return (normal_vector(vec_subt(radial_component,
-				vec_scale(hit->objs->orientation, r * r / (h * h + r * r)))));
+	return (normal_vector(vec_subt(
+		vec_scale(hit->objs->orientation, h),
+		vec_scale(apex_to_point, hit->objs->cone_k)
+	)));
 }
