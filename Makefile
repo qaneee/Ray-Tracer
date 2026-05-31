@@ -6,7 +6,7 @@
 #    By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:43:57 by arvardan          #+#    #+#              #
-#    Updated: 2026/05/08 23:30:54 by arvardan         ###   ########.fr        #
+#    Updated: 2026/05/31 16:28:24 by arvardan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,7 @@ $(NAME): $(OBJS)
 	@sleep 0.07
 	@printf "\033[38;5;21m╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═╝╚═╝░░╚═╝░░░╚═╝░░░\033[0m\n"
 	@sleep 0.07
-	@printf "\033[38;5;33m    👽 MADE BY: arvardan👽\033[0m\n"
+	@printf "\033[38;5;33m    👽 MADE BY: arvardan and ipogodae👽\033[0m\n"
 
 bonus: all
 

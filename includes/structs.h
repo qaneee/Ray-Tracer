@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:04:03 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/13 19:14:46 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/05/31 16:38:56 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_hit
 	t_objs	*objs;
 	float	u;
 	float	v;
+	t_ray	ray;
 }	t_hit;
 
 typedef struct s_mlx

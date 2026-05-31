@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by arvardan.*
+*This project has been created as part of the 42 curriculum by arvardan, ipogodae.*
 
 # miniRT
 
@@ -15,7 +15,7 @@ This implementation includes:
 
 ## Instructions
 ### Prerequisites
-- Linux
+- Linux or MacOS
 - `cc` and `make`
 - X11 development libraries (for MiniLibX), typically `libx11-dev` and `libxext-dev`
 
