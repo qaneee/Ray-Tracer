@@ -6,7 +6,7 @@
 #    By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:43:57 by arvardan          #+#    #+#              #
-#    Updated: 2026/05/31 16:28:24 by arvardan         ###   ########.fr        #
+#    Updated: 2026/08/18 18:31:51 by arvardan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,7 @@ $(MLX):
 	@printf "$(R)⚙️  building minilibx...$(RS)\n"
 	@$(MAKE) -C $(MLX_DIR) --silent > /dev/null 2>&1
 
-$(NAME): $(OBJS)
+   $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@printf "$(Y)🔧 linking objects...$(RS)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -Llibft -lft $(MLX_FLAGS) -o $(NAME)
 	@printf "$(R)✅ build complete: ./$(NAME)$(RS)\n"
@@ -141,6 +141,8 @@ clean:
 	@printf "$(R)🧹 objects cleaned!$(RS)\n"
 
 fclean: clean
+	@$(MAKE) -C libft fclean --silent > /dev/null 2>&1
+	@rm -f $(MLX)
 	@rm -f $(NAME)
 	@printf "$(R)🔥 $(NAME) removed!$(RS)\n"
 
