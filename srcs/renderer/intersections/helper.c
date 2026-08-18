@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 17:02:15 by arvardan          #+#    #+#             */
-/*   Updated: 2026/05/31 16:38:18 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/08/18 17:36:07 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vec3	cone_side_normal(t_hit *hit)
 	apex_to_point = vec_subt(hit->point, hit->objs->pos);
 	h = dot_product(apex_to_point, hit->objs->orientation);
 	return (normal_vector(vec_subt(
-		vec_scale(hit->objs->orientation, h),
-		vec_scale(apex_to_point, hit->objs->cone_k)
-	)));
+				vec_scale(hit->objs->orientation, h),
+				vec_scale(apex_to_point, hit->objs->cone_k)
+			)));
 }
