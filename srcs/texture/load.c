@@ -6,7 +6,7 @@
 /*   By: arvardan <arvardan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 22:20:39 by arvardan          #+#    #+#             */
-/*   Updated: 2026/03/02 20:26:33 by arvardan         ###   ########.fr       */
+/*   Updated: 2026/08/18 19:45:28 by arvardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	load_skybox(t_data *data)
 	data->scene.skybox = load_texture(data->mlx.mlx, data->scene.skybox_path);
 	if (!data->scene.skybox)
 	{
-		printf("Error\nFailed to load skybox!\n");
-		cleanup_and_exit(data);
+		cleanup_and_error(data, "Failed to load texture.\n");
 	}
 }
 
@@ -58,8 +57,7 @@ void	load_object_textures(t_data *data)
 			objs->texture = load_texture(data->mlx.mlx, objs->bump_map);
 			if (!objs->texture)
 			{
-				printf("Error\nFailed to load texture: %s\n", objs->bump_map);
-				cleanup_and_exit(data);
+				cleanup_and_error(data, "Failed to load texture.\n");
 			}
 		}
 		else
